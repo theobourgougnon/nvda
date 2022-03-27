@@ -2156,6 +2156,13 @@ class BrowseModePanel(SettingsPanel):
 		)
 		self.passThroughAudioIndicationCheckBox.SetValue(config.conf["virtualBuffers"]["passThroughAudioIndication"])
 
+				# Translators: This is the label for a checkbox in the
+		# browse mode settings panel.																										####### TESSSSSSTT ###########
+		topOfPageAfterSearchText = _("New &Mode (when supported)")
+		self.topOfPageAfterSearchCheckBox = sHelper.addItem(wx.CheckBox(self, label=topOfPageAfterSearchText))
+		self.bindHelpEvent("BrowseModeSettingsTopOfPageAfterSearch", self.topOfPageAfterSearchCheckBox)
+		self.topOfPageAfterSearchCheckBox.SetValue(config.conf["virtualBuffers"]["topOfPageAfterSearch"])
+
 		# Translators: This is the label for a checkbox in the
 		# browse mode settings panel.
 		trapNonCommandGesturesText = _("&Trap all non-command gestures from reaching the document")
@@ -2190,6 +2197,7 @@ class BrowseModePanel(SettingsPanel):
 		config.conf["virtualBuffers"]["autoPassThroughOnFocusChange"]=self.autoPassThroughOnFocusChangeCheckBox.IsChecked()
 		config.conf["virtualBuffers"]["autoPassThroughOnCaretMove"]=self.autoPassThroughOnCaretMoveCheckBox.IsChecked()
 		config.conf["virtualBuffers"]["passThroughAudioIndication"]=self.passThroughAudioIndicationCheckBox.IsChecked()
+		config.conf["virtualBuffers"]["topOfPageAfterSearch"]=self.topOfPageAfterSearchCheckBox.IsChecked()
 		config.conf["virtualBuffers"]["trapNonCommandGestures"]=self.trapNonCommandGesturesCheckBox.IsChecked()
 		config.conf["virtualBuffers"]["autoFocusFocusableElements"] = (
 			self.autoFocusFocusableElementsCheckBox.IsChecked()

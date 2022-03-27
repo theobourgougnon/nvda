@@ -2375,6 +2375,16 @@ msgstr "texte \"%s\" non trouvé"
 msgid "Find Error"
 msgstr "Chaîne non trouvée"
 
+#. Translators: This is the label for the title of the 
+#. messagebox that asks to return to the top of the
+msgid "No match found"
+msgstr "Aucun résultat trouvé"
+
+#. Translators: This is the label for the content of the 
+#. messagebox that asks to return to the top of the window
+msgid "Would you like to return to the top of the page ?"
+msgstr "Voulez-vous revenir en haut de la page ?"
+
 #. Translators: Input help message for NVDA's find command.
 msgid "find a text string from the current cursor position"
 msgstr "Rechercher un texte à partir de la position courante du curseur"
@@ -9787,6 +9797,11 @@ msgstr "Mode formulaire automatique lors du déplacement du &curseur"
 #. browse mode settings panel.
 msgid "Audio indication of focus and browse modes"
 msgstr "Indication &audio du mode formulaire ou navigation"
+
+#. Translators: This is the label for a checkbox in the
+#. browse mode settings panel.
+msgid "Message box that appears and offers to return to the top of the page following a search without results"
+msgstr "Boîte de dialogue qui s'affiche et propose de revenir en haut de la page suite à une recherche sans résultats"
 
 #. Translators: This is the label for a checkbox in the
 #. browse mode settings panel.

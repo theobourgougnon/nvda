@@ -176,9 +176,39 @@ class CursorManager(documentBase.TextContainerObject,baseObject.ScriptableObject
 			if not willSayAllResume:
 				speech.speakTextInfo(info, reason=controlTypes.OutputReason.CARET)
 		else:
-			wx.CallAfter(gui.messageBox,_('text "%s" not found')%text,_("Find Error"),wx.OK|wx.ICON_ERROR)
+			if config.conf["virtualBuffers"]["useNewMenu"]:
+				# If text not found or have seen them all, ask to return to top of the page
+				self.info_position_cursor=api.getReviewPosition().obj.makeTextInfo(textInfos.POSITION_FIRST)
+				wx.CallAfter(self.GoToTop)
+			else:
+				wx.CallAfter(gui.messageBox,_('text "%s" not found')%text,_("Find Error"),wx.OK|wx.ICON_ERROR)
 		CursorManager._lastFindText=text
 		CursorManager._lastCaseSensitivity=caseSensitive
+
+	def GoToTop(self):			# Define an internal (nested) function
+		#. Translators: This is the label for the content of the 
+		#. messagebox that asks to return to the top of the window
+		findLabelText = _("Would you like to return to the top of the page ?")
+		#. Translators: This is the label for the title of the 
+		#. messagebox that asks to return to the top of the
+		findLabelTitle = _("No match found")
+		# Translators: An option in find dialog to perform case-sensitive search.
+		result = gui.messageBox(findLabelText, findLabelTitle, wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL)
+		if result == wx.YES:
+			api.setReviewPosition(self.info_position_cursor,isCaret=True)
+			self.info_position_cursor.expand(textInfos.UNIT_LINE)
+			speech.speakTextInfo(self.info_position_cursor, unit=textInfos.UNIT_LINE, reason=controlTypes.OutputReason.CARET)
+			review=api.getReviewPosition()
+			try:
+				review.updateCaret()
+			except NotImplementedError:
+				# Translators: Reported when trying to move caret to the position of the review cursor but there is no caret.
+				ui.message(_("No caret"))
+				return
+		elif result == wx.NO:
+			return
+		else:
+			return
 
 	def script_find(self, gesture, reverse=False):
 		# #8566: We need this to be a modal dialog, but it mustn't block this script.
