@@ -2156,11 +2156,14 @@ class BrowseModePanel(SettingsPanel):
 		)
 		self.passThroughAudioIndicationCheckBox.SetValue(config.conf["virtualBuffers"]["passThroughAudioIndication"])
 
-				# Translators: This is the label for a checkbox in the
-		# browse mode settings panel.																										####### TESSSSSSTT ###########
-		topOfPageAfterSearchText = _("New &Mode (when supported)")
+		# Translators: This is the label for a checkbox in the
+		# browse mode settings panel.																									
+		topOfPageAfterSearchText = _("Message box that appears and offers to return to the top of the page following a search without results")
 		self.topOfPageAfterSearchCheckBox = sHelper.addItem(wx.CheckBox(self, label=topOfPageAfterSearchText))
-		self.bindHelpEvent("BrowseModeSettingsTopOfPageAfterSearch", self.topOfPageAfterSearchCheckBox)
+		self.bindHelpEvent(
+			"BrowseModeSettingsTopOfPageAfterSearch", 
+			self.topOfPageAfterSearchCheckBox
+		)
 		self.topOfPageAfterSearchCheckBox.SetValue(config.conf["virtualBuffers"]["topOfPageAfterSearch"])
 
 		# Translators: This is the label for a checkbox in the

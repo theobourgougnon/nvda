@@ -176,8 +176,8 @@ class CursorManager(documentBase.TextContainerObject,baseObject.ScriptableObject
 			if not willSayAllResume:
 				speech.speakTextInfo(info, reason=controlTypes.OutputReason.CARET)
 		else:
-			if config.conf["virtualBuffers"]["useNewMenu"]:
-				# If text not found or have seen them all, ask to return to top of the page
+			# #4637: If text not found or have seen them all, ask to return to top of the page
+			if config.conf["virtualBuffers"]["topOfPageAfterSearch"]:
 				self.info_position_cursor=api.getReviewPosition().obj.makeTextInfo(textInfos.POSITION_FIRST)
 				wx.CallAfter(self.GoToTop)
 			else:

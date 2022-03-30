@@ -9800,8 +9800,8 @@ msgstr "Indication &audio du mode formulaire ou navigation"
 
 #. Translators: This is the label for a checkbox in the
 #. browse mode settings panel.
-msgid "Message box that appears and offers to return to the top of the page following a search without results"
-msgstr "Boîte de dialogue qui s'affiche et propose de revenir en haut de la page suite à une recherche sans résultats"
+msgid "Following a search without results, show a messagebox that offers to return to the top of the page"
+msgstr "Suite à une recherche sans résultats, affichage d'une boîte de dialogue qui propose de revenir en haut de la page suite à une recherche sans résultats"
 
 #. Translators: This is the label for a checkbox in the
 #. browse mode settings panel.
